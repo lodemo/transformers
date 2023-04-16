@@ -1418,7 +1418,5 @@ class TFCLIPModel(TFCLIPPreTrainedModel):
             'logits_per_image': output.logits_per_image,
             'logits_per_text': output.logits_per_text,
             'text_embeds': output.text_embeds,
-            'image_embeds': output.image_embeds,
-            'text_model_output': output.text_model_output,
-            'vision_model_output': output.vision_model_output,
+            'image_embeds': output.image_embeds
         }
