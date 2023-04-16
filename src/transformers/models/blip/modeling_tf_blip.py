@@ -1114,7 +1114,7 @@ class TFBlipForConditionalGeneration(TFBlipPreTrainedModel):
             inputs (`Dict[str, tf.Tensor]`):
                 The input of the saved model as a dictionary of tensors.
         """
-        output = self.call(inputs)
+        output = self.generate(inputs)
 
         return self.serving_output(output)
 
