@@ -1405,4 +1405,4 @@ class TFCLIPModel(TFCLIPPreTrainedModel):
         # TODO: As is this currently fails with saved_model=True, because
         # TensorFlow cannot trace through nested dataclasses. Reference:
         # https://github.com/huggingface/transformers/pull/16886
-        return output
+        return output.to_tuple()
