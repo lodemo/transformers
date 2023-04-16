@@ -1401,8 +1401,25 @@ class TFCLIPModel(TFCLIPPreTrainedModel):
 
         return outputs
 
-    def serving_output(self, output: TFCLIPOutput) -> TFCLIPOutput:
+    def serving_output(self, output: TFCLIPOutput) -> Dict[str, tf.Tensor]:
         # TODO: As is this currently fails with saved_model=True, because
         # TensorFlow cannot trace through nested dataclasses. Reference:
         # https://github.com/huggingface/transformers/pull/16886
-        return output.to_tuple()
+        # output = TFCLIPOutput(
+        #     loss=loss,
+        #     logits_per_image=logits_per_image,
+        #     logits_per_text=logits_per_text,
+        #     text_embeds=text_embeds,
+        #     image_embeds=image_embeds,
+        #     text_model_output=text_outputs,
+        #     vision_model_output=vision_outputs,
+        # )
+        return {
+            'loss': output.loss,
+            'logits_per_image': output.logits_per_image,
+            'logits_per_text': output.logits_per_text,
+            'text_embeds': output.text_embeds,
+            'image_embeds': output.image_embeds,
+            'text_model_output': output.text_model_output,
+            'vision_model_output': output.vision_model_output,
+        }
