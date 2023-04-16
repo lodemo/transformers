@@ -1415,7 +1415,6 @@ class TFCLIPModel(TFCLIPPreTrainedModel):
         #     vision_model_output=vision_outputs,
         # )
         return {
-            'loss': output.loss,
             'logits_per_image': output.logits_per_image,
             'logits_per_text': output.logits_per_text,
             'text_embeds': output.text_embeds,
